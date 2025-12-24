@@ -142,7 +142,6 @@ console.log(Openpanels)
 
 // OUVERTURE + CHARGEMENT PAGE
 Openpanels.forEach(link => {
-    console.log('toto')
     link.addEventListener('click', async e => {
         console.log(e, link)
         e.preventDefault();
