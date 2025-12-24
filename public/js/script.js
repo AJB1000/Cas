@@ -141,6 +141,7 @@ const Sidecontent = document.getElementById('side-content');
 // OUVERTURE + CHARGEMENT PAGE
 document.querySelectorAll('.open-panel').forEach(link => {
     link.addEventListener('click', async e => {
+        console.log(e)
         e.preventDefault();
 
         const page = link.dataset.page;
