@@ -120,48 +120,40 @@ document.getElementById('panzoom-container')
 // TOOLTIP
 const tooltip = document.getElementById('tooltip');
 const hotspots = document.querySelectorAll('.hotspot');
-
-// hotspots.forEach(hs => {
-//     hs.addEventListener('mousemove', e => {
-//         tooltip.textContent = hs.dataset.label;
-//         tooltip.style.opacity = 1;
-
-//         tooltip.style.left = e.clientX + "px";
-//         tooltip.style.top = e.clientY + "px";
-//     });
-
-//     hs.addEventListener('mouseleave', () => {
-//         tooltip.style.opacity = 0;
-//     });
-// });
-
 const Sidepanel = document.getElementById('side-panel');
 const Sidecontent = document.getElementById('side-content');
-const Openpanels = document.querySelectorAll('.open-panel')
-console.log(Openpanels)
 
-// OUVERTURE + CHARGEMENT PAGE
-Openpanels.forEach(link => {
-    link.addEventListener('click', async e => {
+hotspots.forEach(hs => {
+    hs.addEventListener('mousemove', e => {
+        tooltip.textContent = hs.dataset.label;
+        tooltip.style.opacity = 1;
+
+        tooltip.style.left = e.clientX + "px";
+        tooltip.style.top = e.clientY + "px";
+    });
+
+    hs.addEventListener('mouseleave', () => {
+        tooltip.style.opacity = 0;
+    });
+
+    hs.addEventListener('click', async e => {
         e.preventDefault();
-
-        const page = link.dataset.page;
+        const page = hs.dataset.page;
         console.log(page)
         // Chargement dynamique du HTML local
         try {
             const response = await fetch(page);
             Sidecontent.innerHTML = await response.text();
-            console.log(Sidecontent)
         } catch (err) {
             Sidecontent.innerHTML = "<p>Erreur de chargement.</p>";
         }
-
         // Ouvrir le panneau
         Sidepanel.classList.add('visible');
     });
-    console.log(e, link)
-
 });
+
+
+
 
 // SWIPE POUR FERMER
 let startX = 0;

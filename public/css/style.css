@@ -302,8 +302,8 @@ svg {
   position: fixed;
   top: 0;
   right: 0;
-  width: 80vw;              /* adaptatif mobile */
-  max-width: 420px;
+  width: 100vw;              /* adaptatif mobile */
+  /* max-width: 420px; */
   height: 100vh;
   background: #ffffff;
   box-shadow: -4px 0 12px rgba(0,0,0,0.25);
@@ -319,7 +319,7 @@ svg {
 }
 
 #side-content {
-  padding: 20px;
+  padding: 10px;
   font-family: sans-serif;
 }
 
