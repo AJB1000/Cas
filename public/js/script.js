@@ -138,6 +138,7 @@ const hotspots = document.querySelectorAll('.hotspot');
 const Sidepanel = document.getElementById('side-panel');
 const Sidecontent = document.getElementById('side-content');
 const Openpanels = document.querySelectorAll('.open-panel')
+console.log(Openpanels)
 // OUVERTURE + CHARGEMENT PAGE
 Openpanels.forEach(link => {
     link.addEventListener('click', async e => {
