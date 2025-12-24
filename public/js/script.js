@@ -143,7 +143,6 @@ console.log(Openpanels)
 // OUVERTURE + CHARGEMENT PAGE
 Openpanels.forEach(link => {
     link.addEventListener('click', async e => {
-        console.log(e, link)
         e.preventDefault();
 
         const page = link.dataset.page;
@@ -160,6 +159,8 @@ Openpanels.forEach(link => {
         // Ouvrir le panneau
         Sidepanel.classList.add('visible');
     });
+    console.log(e, link)
+
 });
 
 // SWIPE POUR FERMER
