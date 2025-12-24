@@ -1,0 +1,203 @@
+<!-- daniel dopler avec word pad
+   date de creation : 30/10/25-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>cartes cassini</title>
+  <link rel="stylesheet" href="public/css/normalize.css">
+  <link rel="stylesheet" href="public/css/style.css">
+</head>
+
+<body>
+  <header style="display:flex;">
+    <img src="public/images/boussole.jpg" style="padding-right: 32px; max-width: 200px;height: auto;">
+    <span style="flex: 2;"><span style="font-size: 1.3rem; font-style: italic;">Il était une fois ...</span><br>
+      <h1 style="text-transform: uppercase;"">la carte de France</h1></span>
+  </header>
+  <section>
+      <a href=" public/images/logo.jpg" target="_blank"><img src="public/images/logo.jpg"
+          style="width:85vw;height:auto;"></a>
+        <div style="font-weight: bold;">
+          Bon nombre d’entre nous apprécient les cartes…elles préparent les prochaines escapades, nous orientent sur
+          le bon chemin
+          et nous permettent de retrouver le refuge dans le brouillard, surtout depuis les versions numériques avec
+          gps.
+        </div>
+        </section>
+        <section>
+          <h2>
+            60 ans de travaux
+          </h2>
+          <div style="display:flex; justify-content: space-between;">
+            <div class="left">
+              Ces fidèles compagnes ne datent pas d’aujourd’hui. Les premières cartes date des Babyloniens, 6000 ans
+              avant notre ère. Plus tard, grâce aux grands voyages, les grecs cartographient leur monde connu, de l’Inde
+              à la Grande Bretagne. Ces cartes étaient basées sur des récits de voyages, et présentaient donc très peu
+              de précision. <br>
+              Par ailleurs, des grands progrès en mathématique et en astronomie permettent aux astronomes grecs de
+              calculer les premières latitudes et longitudes, donc à préciser leurs cartes. <br>
+              Ces connaissances se perdent avec l’extinction de la culture grecque. Les écrits antiques sont repris
+              successivement par les indiens au 4ème siècle après JC, puis par les arabes aux 9ème siècle. Enfin, en
+              bons derniers, l’Europe redécouvre ces connaissances au 16ème siècle grâce à des traductions de textes de
+              toutes ces civilisations
+              passées.<br>
+              Jusque là, on disposait de cartes de France peu précises et souvent incomplètes. En monarque éclairé,
+              Louis XIV comprend l’intérêt de cartographier son royaume avec le plus de précision possible. Il retient
+              une nouvelle méthode de travail méthode, basée sur des mesures visuelles d’un point à un autre, présente
+              une meilleure précision que les mesures astronomiques de latitudes et de longitudes. La construction de la
+              carte de France va durer 60 ans et ne sera terminée que sous Louis XV. Des progrès techniques en
+              <span class="tooltipText"
+                data-tip="début 17 ème, découverte de la longue vue, du quart de cercle et du cercle répétiteur."><span
+                  class="tooltip">optique</span></span>
+              permettent de faire des mesures à plus de 80 km, avec une
+              <span class="tooltipText"
+                data-tip="la précision atteinte par des mesures topo sur 500 km sont de l'ordre de 100m, alors que la précision atteinte par mesure astronomique est de l'ordre de 2km."><span
+                  class="tooltip">grande précision </span></span>
+              d’angle et les
+              <span class="tooltipText"
+                data-tip="les calculs des triangles sont possibles depuis l’avènement de la trigonométrie…une histoire qui travers le temps. Les premiers à y voir clair sont les Grecs (Hipparque) en 140 av JC. Puis se sont les Indiens au IV ième siècle, s’inspirant de textes antiques, qui remettent cette partie des math au goût du jour. Viennent les Arables au IX ième siècle après JC, s'inspirant... des Indiens. 
+              Enfin, en bons derniers, l’Europe redécouvre les sinus, cosinus et autres tangentes au 16ème siècle grâce à des traductions de toutes ces civilisations passées. La trigo deviendra populaire à partir de 1595 grâce à l'ouvrage 'Trigonométrie' par Bartholomée Pitiscus….merci qui ? "
+                data-note="Note :"><span class="tooltip">progrès mathématiques</span></span>
+              permettent de faire les calculs géométriques des triangles.
+            </div>
+            <div class="right">
+              <h3>un peu de géométrie</h3>
+              <div style="display: flex; flex-direction: column;">
+                <p style="padding-right:5px;">le principe consiste à couvrir la france par des triangles d’environ 40 km
+                  de coté.</p>
+                <a href="public/images/trianglesfrance2.jpg" target="_blank"><img
+                    src="public/images/trianglesfrance-l.jpg"></a>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h2>
+            et en Alsace ...
+          </h2>
+          <div style="display:flex; justify-content: space-between;">
+            <div class="left">
+              chaque sommet de triangle est situé sur un point haut visible des autres points hauts à proximité.
+              Il faut mesurer précisément chaque angle de chaque triangle, et avec une seule mesure de longueur d’un
+              seul coté d’un seul triangle, on peut <a href="https://fr.wikipedia.org/wiki/loi_des_cosinus"
+                target="_blank"> calculer </a>les positions de tous les points hauts. <br>
+              Ces points hauts sont les sommets des collines, des clochers d’églises voir de petites tours construites
+              pour l’occasion. <br>
+              Certaines visées sont possibles dans les 2 sens, comme pour le couple donnon – brézouard, bien visibles de
+              part et d’autres. D’autres visées sont plus douteuses, comme le couple cathédrale – arbre de huttendorf.
+              de jour, il n’est pas possible de retrouver la colline de huttendorf dans le lointain à partir de la
+              cathédrale. La mesure a peut être eu lieu de nuit, avec un grand feu allumé sur le sommet.<br>
+              Une fois tous ces points hauts placés sur une carte de france, il est plus facile de positionner tous les
+              détails situés à l’intérieur des triangles, en se référant aux 3 points hauts qui les entourent.<br><br>
+              Notre belle alsace a été ainsi cartographie de 1757 à 1767 sous la maîtrise des géographes <a
+                href="https://fr.wikipedia.org/wiki/famille_cassini" target="_blank">cassini. </a>
+              Leurs travaux sont présentés dans cet <a href="public/pdf/recueilcassini.pdf" target="_blank"> ouvrage.
+              </a>
+            </div>
+            <div class="right">
+              <div style="display: flex; flex-direction: column;">
+                <a href="public/images/triangles.jpg"><img src="public/images/triangles.jpg"></a>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h2>
+            des buts de randonnées
+          </h2>
+          <div style="display:flex; justify-content: space-between;">
+            <div class="left">
+              ces sommets de triangles et parfois sommets tous courts, peuvent devenir autant de buts de randonnées.
+              le sommet devient point d’observation et lieu de mémoire. on imagine bien les ingénieurs topo d’il y a 250
+              ans,
+              montant en chaise à porteur avec tout leur matériel et leur cohorte d’assistants.
+              <br>
+              la carte ci-dessous permet d'accéder à une fiche pour certains sommets de triangle. cette fiche décrit les
+              éléments observés sur place, éventuellement un point d'histoire
+              et propose une petite randonnée dans le secteur. dans un esprit collaboratif, n'hésitez pas à envoyer des
+              info manquantes au caf strasbourg, elles seront ajoutées à cette page web.
+              <br>
+              pour rappel, la visibilité est facilitée par temps froid, clair, les matins d’hiver.
+              des jumelles, une boussole, une carte d’alsace, un rapporteur seront autant d’outils qui vont faciliter
+              vos
+              observations.
+            </div>
+            <div class="right">
+              <div style="display: flex; flex-direction: column;">
+                <a href="public/images/tour.jpg"><img src="public/images/tour.jpg"></a>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h2>
+            carte cassini
+          </h2>
+          <div id="panzoom-container">
+            <svg id="map-svg" viewBox="0 0 1380 1380" preserveAspectRatio="xMidYMid meet">
+
+              <!-- Image de la carte -->
+              <image href="public/images/fond.jpg" width="1380" height="1380"></image>
+
+              <!-- Exemple de points interactifs -->
+              <a href="#" class="open-panel" data-page="afaire.html"></a>
+                <g class="hotspot" data-label="Cathédrale de Strasbourg">
+                  <circle cx="797" cy="617" r="35"></circle>
+                  <circle cx="797" cy="617" r="2.9"></circle>
+                </g>
+              </a>
+
+              <a href="public/pdf/fortlouis.pdf" target="_blank">
+                <g class="hotspot" data-label="Fort Louis">
+                  <circle cx="973" cy="440" r="35"></circle>
+                </g>
+              </a>
+
+              <a href="public/pdf/hautbarr.pdf" target="_blank">
+                <g class="hotspot" data-label="Haut Barr">
+                  <circle cx="533" cy="527" r="35"></circle>
+                </g>
+              </a>
+              <a href="#" class="open-panel" data-page="public/pages/huttendorf.html"></a>
+                <g class="hotspot" data-label="Huttendorf">
+                  <circle cx="710" cy="465" r="35"></circle>
+                </g>
+              </a>
+
+              <a href="public/pdf/brezouard.pdf" target="_blank">
+                <g class="hotspot" data-label="Brezouard">
+                  <circle cx="450" cy="925" r="35"></circle>
+                </g>
+              </a>
+            </svg>
+            <!-- Info-bulle -->
+            <!-- <div id="tooltip"></div> -->
+          </div>
+          <p style="position: relative; top: 0.5rem; font-size: 0.8rem; color: #6d6d6d;">( Déplacer avec un doigt,
+            Zoomer avec deux doigts, Remonter haut de page en glissant sur le bord droit de l'écran. )</p>
+        </section>
+        <div id="note-panel">
+          <div id="note-handle">⨯</div>
+          <div id="note-content"></div>
+        </div>
+        <div id="side-panel">
+          <div id="side-content"></div>
+        </div>
+        <footer>
+          <div class="btn-group">
+            <a href="#" class="button">Accueil</a>
+            <a href="#" class="button">Haut de page</a>
+            <a href="#" class="button">Précédent</a>
+            <a href="#" class="button">Suivant</a>
+          </div>
+
+            <p>© 2025 - Daniel Doppler</p>
+        </footer>
+        <script src="public/js/panzoom.js"></script>
+        <script src="public/js/script.js"></script>
+</body>
+</html>
