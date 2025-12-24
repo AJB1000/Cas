@@ -302,7 +302,7 @@ svg {
   position: fixed;
   top: 0;
   right: 0;
-  width: 100vw;              /* adaptatif mobile */
+  width: 95vw;              /* adaptatif mobile */
   /* max-width: 420px; */
   height: 100vh;
   background: #ffffff;
