@@ -139,8 +139,10 @@ const Sidepanel = document.getElementById('side-panel');
 const Sidecontent = document.getElementById('side-content');
 const Openpanels = document.querySelectorAll('.open-panel')
 console.log(Openpanels)
+
 // OUVERTURE + CHARGEMENT PAGE
 Openpanels.forEach(link => {
+    console.log('toto')
     link.addEventListener('click', async e => {
         console.log(e, link)
         e.preventDefault();
