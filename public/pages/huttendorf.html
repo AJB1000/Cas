@@ -1,9 +1,16 @@
 <header style="display:flex;">
-    <img src="public/images/boussole.jpg" style="padding-right: 32px; max-width: 200px;height: auto;">
-    <h1 style="text-transform: uppercase;"">Arbre de Huttendorf</h1></span>
+    <h1 style="text-transform: uppercase; font-size: 1.2rem;">Arbre de Huttendorf</h1></span>
 </header>
 
 <div style="display:flex; justify-content: space-between;flex-wrap: wrap; width: 80vw;">
+    <div class="left"></div>
+        <h3 class="left">Extrait de la carte Cassini</h3>
+        <svg id="map-svg" viewBox="0 0 1380 1380" preserveAspectRatio="xMidYMid meet">
+            <!-- Image de la carte -->
+            <image href="public/pages/huttendorf_cassini.jpg" width="1380" height="1380"></image>
+            <use href="public/css/map.svg#goutte" x="43%" y="32.3%" width="120" height="160" />
+        </svg>
+    </div>
     <p class="left">
         Un des points remarquable de la carte indique « Arbre » pour toute identification. Un chalenge est lancé
         à tout topographe en herbe : retrouver ce point haut visible de Saverne, de Strasbourg, de Wissembourg
@@ -11,7 +18,6 @@
         d’altitude, sur la colline d’Oberdorf.
         Le sommet est accessible par des pistes agricoles.
     </p>
-    <img src=" public/pages/huttendorf_cassini.jpg" class="right" style="width: 15vw; height: auto;"/>
     <div class="left"></div>
         <h3 class="left">Extrait carte IGN</h3>
         <svg id="map-svg" viewBox="0 0 1380 1380" preserveAspectRatio="xMidYMid meet">
@@ -25,7 +31,7 @@
         <h3>
             Les sommets visés : 
         </h3>
-        <ul>
+        <ul style="padding-left: 2rem;">
             <li>Fort Louis : 90° La citadelle de Fort Louis a été détruite en 1793. Plus rien n’est visible.</li>
             <li>Signal de Wissembourg : 45° peu visible</li>           
             <li>Le Haut Barr de Saverne : 247° bien visible  (avec le Dabo en arrière plan)</li>            

@@ -326,7 +326,7 @@ svg {
   transition: transform 0.3s ease-out;
   z-index: 9999;
   overflow-y: auto;
-  touch-action: none;       /* nécessaire pour le swipe */
+  /* touch-action: none;       nécessaire pour le swipe */
 }
 
 #side-panel.visible {
@@ -366,6 +366,15 @@ svg {
 @media (max-width: 768px) {
 
   /* smartphone selon Bootstrap*/
+  header {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    padding: .5rem;
+    border-radius: 10px;
+    margin-bottom: .5rem;
+    text-align: center;
+    box-shadow: 0 4px 6px r100gba(0, 0, 0, 0.1);
+  }
   .toc ul {
     column-count: 1;
   }

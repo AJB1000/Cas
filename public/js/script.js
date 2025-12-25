@@ -124,22 +124,21 @@ const Sidepanel = document.getElementById('side-panel');
 const Sidecontent = document.getElementById('side-content');
 
 hotspots.forEach(hs => {
-    hs.addEventListener('mousemove', e => {
-        tooltip.textContent = hs.dataset.label;
-        tooltip.style.opacity = 1;
+    // hs.addEventListener('mousemove', e => {
+    //     tooltip.textContent = hs.dataset.label;
+    //     tooltip.style.opacity = 1;
 
-        tooltip.style.left = e.clientX + "px";
-        tooltip.style.top = e.clientY + "px";
-    });
+    //     tooltip.style.left = e.clientX + "px";
+    //     tooltip.style.top = e.clientY + "px";
+    // });
 
-    hs.addEventListener('mouseleave', () => {
-        tooltip.style.opacity = 0;
-    });
+    // hs.addEventListener('mouseleave', () => {
+    //     tooltip.style.opacity = 0;
+    // });
 
     hs.addEventListener('click', async e => {
         e.preventDefault();
         const page = hs.dataset.page;
-        console.log(page)
         // Chargement dynamique du HTML local
         try {
             const response = await fetch(page);
