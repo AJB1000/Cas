@@ -26,6 +26,11 @@ body {
   padding: 15px;
 }
 
+a {
+  font-weight: bold;
+  color: #3498db;
+}
+
 header {
   background: linear-gradient(135deg, var(--primary), var(--secondary));
   color: white;
@@ -199,7 +204,17 @@ footer {
 
 .tooltip {
   border-bottom: 2px dashed #3498db;
+  font-weight: bold;
   cursor: pointer;
+}
+
+.goutte{
+  fill-opacity:.75;
+  stroke:#fff;
+  stroke-width:1.5;
+  z-index: 9999;
+  cursor:pointer;
+  transition:transform .2s;
 }
 
 .navigation {
