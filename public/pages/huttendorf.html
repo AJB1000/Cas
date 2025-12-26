@@ -1,44 +1,79 @@
-<header style="display:flex;">
+<header id="top" style="display:block;">
     <h1 style="text-transform: uppercase; font-size: 1.2rem;">Arbre de Huttendorf</h1></span>
 </header>
 
 <div style="display:flex; justify-content: space-between;flex-wrap: wrap; width: 80vw;">
     <div class="left"></div>
-        <h3 class="left">Extrait de la carte Cassini</h3>
-        <svg id="map-svg" viewBox="0 0 1380 1380" preserveAspectRatio="xMidYMid meet">
+    <h3 class="left">Extrait de la carte Cassini</h3>
+    <div class="panzoom-container">
+        <svg class="map-svg" viewBox="0 0 1380 1380" preserveAspectRatio="xMidYMid meet">
             <!-- Image de la carte -->
             <image href="public/images/huttendorf_cassini.png" width="1380" height="1380"></image>
             <use href="public/css/map.svg#goutte" x="52.5%" y="48%" width="120" height="160" />
         </svg>
     </div>
-    <p class="left">
-        Un des points remarquable de la carte de triangulation indique « Arbre » pour toute identification. Un chalenge est lancé
-        à tout topographe en herbe : retrouver ce point haut visible de Saverne, de Strasbourg, de Wissembourg
-        et de Fort Louis. Après recherche, il pourrait se situer au nord ouest du village de Huttendorf à 273 m
-        d’altitude, sur la colline d’Oberfeld.
-        Sur la carte de Cassini (réalisée sur la base des triangulations) on note un calvaire au sommet de l'Oberfeld.
+</div>
+<p class="left">
+    <p>
+        Un des points remarquable de la carte de triangulation indique « Arbre » pour toute identification. Un chalenge est
+        lancé à tout topographe en herbe : retrouver ce point haut visible de Saverne, de Strasbourg, de Wissembourg et de Fort Louis.
+    </p><br>
+    <p>
+        Après recherche, il pourrait se situer au nord ouest du village de Huttendorf à 273 m d’altitude, sur la colline d’Oberfeld. On peut remarquer que la limite des bans entre Huttendorf et Morschwiller fait un angle droit à cet endroit. Au 18ème siècle on utilisait parfois encore des arbres comme bornes banales, à coté des bornes en pierre.
+    </p><br>
+    <p>
+        Sur la carte de Cassini (réalisée sur la base des triangulations) on note une chapelle (?) au sommet de l'Oberfeld.
+    </p><br>
+    <p>
         Le sommet est accessible par des pistes agricoles.
     </p>
-    <div class="left"></div>
-        <h3 class="left">Extrait de la carte IGN</h3>
-        <svg id="map-svg" viewBox="0 0 1380 1380" preserveAspectRatio="xMidYMid meet">
-            <!-- Image de la carte -->
-            <image href="public/images/huttendorf_ign.png" width="1380" height="1380"></image>
-            <use href="public/css/map.svg#goutte" x="58%" y="47.5%" width="120" height="160" />
-        </svg>
-    </div>
+</p>
+<div class="left"></div>
+<h3 class="left">Extrait de la carte IGN</h3>
+<div class="panzoom-container">
+<svg class="map-svg" viewBox="0 0 1380 1380" preserveAspectRatio="xMidYMid meet">
+    <!-- Image de la carte -->
+    <image href="public/images/huttendorf_ign.png" width="1380" height="1380"></image>
+    <use href="public/css/map.svg#goutte" x="59.4%" y="47.5%" width="120" height="160" />
+</svg>
 </div>
-    <div class="left" style="column-count: 1;">
-        <h3>
-            Les sommets visés : 
-        </h3>
-        <ul style="padding-left: 2rem;">
-            <li>Fort Louis : 90° La citadelle de Fort Louis a été détruite en 1793. Plus rien n’est visible.</li>
-            <li>Signal de Wissembourg : 45° peu visible</li>           
-            <li>Le Haut Barr de Saverne : 247° bien visible  (avec le Dabo en arrière plan)</li>            
-            <li>Cathédrale de Strasbourg : 160° bien visible</li>
-        </ul>
-        <h3>
-            Idée de rando : 8 km. Circuit rond bleu autour de Huttendorf
-        </h3>
-    </div>
+</div>
+</div>
+<div class="left" style="column-count: 1;">
+    <h3>
+        Les sommets visés :
+    </h3>
+    <details class="acc">
+        <summary class="acc__title">Signal de Wissembourg : 45° à 32,8km</summary>
+        <div class="acc__content">
+            peu visible.
+        </div>
+    </details>
+    <details class="acc">
+        <summary class="acc__title">Fort Louis : 91° à 31,3km</summary>
+        <div class="acc__content">
+            La citadelle de Fort Louis a été détruite en 1793. Plus rien n’est visible.
+            <div class="panzoom-container">
+                <svg class="map-svg" viewBox="0 0 2560 1600" preserveAspectRatio="xMidYMid meet">
+                    <image href="public/images/huttendorf_fort-louid_pf.jpg" width="1380" height="1380"></image>
+                    <!-- <use href="public/css/map.svg#goutte" x="52.5%" y="48%" width="120" height="160" /> -->
+                </svg>
+            </div>            
+        </div>
+    </details>
+    <details class="acc">
+        <summary class="acc__title">Cathédrale de Strasbourg : 160° à 26,5km.</summary>
+        <div class="acc__content">
+            bien visible.
+        </div>
+    </details>
+    <details class="acc">
+        <summary class="acc__title">Le Grand Geroldseck : 246° à 23,9km</summary>
+        <div class="acc__content">
+            bien visible (avec le Dabo en arrière plan).
+        </div>
+    </details>
+    <h3>
+        Idée de rando : 8 km. Circuit rond bleu autour de Huttendorf
+    </h3>
+</div>

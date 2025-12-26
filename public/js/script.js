@@ -117,6 +117,13 @@ const panzoom = Panzoom(element, {
 document.getElementById('panzoom-container')
     .addEventListener('wheel', panzoom.zoomWithWheel);
 
+//     // Activation du pinch-to-zoom sur mobile
+// panzooms = document.querySelectorAll('panzoom-container')
+// panzooms.forEach(pz => {
+//     pz.addEventListener('wheel', pz.zoomWithWheel);
+// })
+
+
 // TOOLTIP
 const tooltip = document.getElementById('tooltip');
 const hotspots = document.querySelectorAll('.hotspot');
@@ -124,30 +131,31 @@ const Sidepanel = document.getElementById('side-panel');
 const Sidecontent = document.getElementById('side-content');
 
 hotspots.forEach(hs => {
-    // hs.addEventListener('mousemove', e => {
-    //     tooltip.textContent = hs.dataset.label;
-    //     tooltip.style.opacity = 1;
-
-    //     tooltip.style.left = e.clientX + "px";
-    //     tooltip.style.top = e.clientY + "px";
-    // });
-
-    // hs.addEventListener('mouseleave', () => {
-    //     tooltip.style.opacity = 0;
-    // });
-
     hs.addEventListener('click', async e => {
         e.preventDefault();
         const page = hs.dataset.page;
+        console.log(page)
         // Chargement dynamique du HTML local
         try {
             const response = await fetch(page);
             Sidecontent.innerHTML = await response.text();
+            const svgs = Sidecontent.querySelectorAll('.map-svg')
+            svgs.forEach(el => {
+                console.log(el)
+                if (!el) return
+                // panzoom = Panzoom(el, {
+                //     maxScale: 8,
+                //     minScale: 1,
+                //     contain: 'outside'
+                // })
+
+            })
         } catch (err) {
             Sidecontent.innerHTML = "<p>Erreur de chargement.</p>";
         }
         // Ouvrir le panneau
         Sidepanel.classList.add('visible');
+        Sidepanel.scroll(0, 0)
     });
 });
 

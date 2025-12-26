@@ -1,1 +1,45 @@
-<embed src="afaire.pdf" type="application/pdf" width="100%" height="100%">
+<header style="display:block;">
+    <h1 style="text-transform: uppercase; font-size: 1.2rem;">A faire</h1></span>
+</header>
+
+<div style="display:flex; justify-content: space-between;flex-wrap: wrap; width: 80vw;">
+    <div class="left"></div>
+    <h3 class="left">Extrait de la carte Cassini</h3>
+    <div id="panzoom-container_h1">
+        <svg id="map-svg" viewBox="0 0 1380 1380" preserveAspectRatio="xMidYMid meet">
+            <!-- Image de la carte -->
+            <use href="public/css/map.svg#goutte" x="52.5%" y="48%" width="120" height="160" />
+        </svg>
+    </div>
+</div>
+<p class="left">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</p>
+<div class="left"></div>
+<h3 class="left">Extrait de la carte IGN</h3>
+<div class="panzoom-container">
+<svg id="map-svg" viewBox="0 0 1380 1380" preserveAspectRatio="xMidYMid meet">
+    <!-- Image de la carte -->
+    <use href="public/css/map.svg#goutte" x="59.4%" y="47.5%" width="120" height="160" />
+</svg>
+</div>
+</div>
+</div>
+<div class="left" style="column-count: 1;">
+    <h3>
+        Les sommets visés :
+    </h3>
+    <ul style="padding-left: 2rem;">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <h3>
+        Idée de rando : 8 km. Circuit .....
+    </h3>
+</div>
+<script>
+    document.getElementById('panzoom-container_h1')
+    .addEventListener('wheel', panzoom.zoomWithWheel);
+</script>
