@@ -268,7 +268,7 @@ footer {
 }
 
 /* Conteneur responsive */
-#panzoom-container, #panzoom-containerh_1 {
+#panzoom-container {
   width: 100%;
   height: auto;
   /* pour occuper tout l’écran mobile */

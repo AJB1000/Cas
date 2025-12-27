@@ -1,86 +1,3 @@
-// Adapté de /home/ajb/www/html/caf/js/main.js
-
-// const a = (() => {
-//     document.addEventListener('DOMContentLoaded', function () {
-//         // en dure car la premiere page envoi sur rando du mardi. Si passage à toutes les activités mettre "#activites" comme hash
-//         if (window.location.hash == "") window.location.hash = "#programme-RNDM"
-//         hashArr = window.location.hash.spli   // let vls = {
-//         //    course: {}, courses: [], idCourse: 0, inscritData: {}, participants: [], perso: {}
-//         // }
-//     })
-//     /** traitement des swipe ecran */
-//     const touchStart = (el) => {
-//         el.addEventListener('touchstart', function (event) {
-//             event.stopPropagation();
-//             touchstartX = event.changedTouches[0].screenX;
-//             touchstartY = event.changedTouches[0].screenY;
-//         }, { passive: true }, false);
-//     }
-//     const touchEnd = (el) => {
-//         el.addEventListener('touchend', function (event) {
-//             event.stopPropagation();
-//             touchendX = event.changedTouches[0].screenX;
-//             touchendY = event.changedTouches[0].screenY;
-//             processResult(this, handleGesture(), event);
-//         }, false);
-//     }
-//     const handleGesture = () => {
-//         let horizontalDifference = touchstartX - touchendX
-//         let verticalDifference = touchstartY - touchendY
-//         // Horizontal difference dominates
-//         if (Math.abs(horizontalDifference) > Math.abs(verticalDifference)) {
-//             if (horizontalDifference >= 50) {
-//                 return 'Left';
-//             } else if (horizontalDifference <= -50) {
-//                 return 'Right';
-//             }
-
-//             // Verical or no difference dominates
-//         } else {
-//             if (verticalDifference >= 50) {
-//                 return 'Up';
-//             } else if (verticalDifference <= -50) {
-//                 return 'Down';
-//             }
-//         }
-//     }
-//     const processResult = (el, gesture, event) => {
-//         var classe = el.classList[0]
-//         switch (classe) {
-//             case 'card':
-//                 switch (gesture) {
-//                     // case 'Up' : document.getElementById('iInfo').classList.add('show'); break
-//                     // case 'Left' : document.getElementById('iPart').classList.add('show'); break
-//                     case 'Up': a.toggle('iInfo'); break
-//                     case 'Left': a.toggle('iPart'); break
-//                 }
-//                 break
-//             case 'tooltiptext':
-//                 switch (gesture) {
-//                     case 'Down': console.log(gesture, event.target.style);
-//                         event.target.style.visibility = 'hidden'; break
-//                 }
-//                 break
-//             case 'iPart':
-//                 switch (gesture) {
-//                     // case 'Right' : I.closeiPart(el); break
-//                     case 'Right': a.toggle('iPart'); break
-//                 }
-//                 break
-//         }
-//     }
-//     const swipeables = document.querySelectorAll('.tooltiptext')
-//     for (let i = 0; i < swipeables.length; i++) {
-//         touchStart(swipeables[i]); touchEnd(swipeables[i]);
-//     }
-//     const t = (elId) => {
-//         document.getElementById(elId).classList.toggle('show')
-//     }
-//     return {
-//         toggle: (value) => t(value)
-//     }
-// })()
-
 const triggers = document.querySelectorAll('.tooltipText');
 const panel = document.getElementById('note-panel');
 const content = document.getElementById('note-content');
@@ -112,17 +29,11 @@ const panzoom = Panzoom(element, {
     minScale: 1,
     contain: 'outside'
 });
+console.log(typeof (element), panzoom)
 
 // Activation du pinch-to-zoom sur mobile
 document.getElementById('panzoom-container')
     .addEventListener('wheel', panzoom.zoomWithWheel);
-
-//     // Activation du pinch-to-zoom sur mobile
-// panzooms = document.querySelectorAll('panzoom-container')
-// panzooms.forEach(pz => {
-//     pz.addEventListener('wheel', pz.zoomWithWheel);
-// })
-
 
 // TOOLTIP
 const tooltip = document.getElementById('tooltip');
@@ -131,6 +42,7 @@ const Sidepanel = document.getElementById('side-panel');
 const Sidecontent = document.getElementById('side-content');
 
 hotspots.forEach(hs => {
+    // let panzoomInstances = []
     hs.addEventListener('click', async e => {
         e.preventDefault();
         const page = hs.dataset.page;
@@ -139,27 +51,35 @@ hotspots.forEach(hs => {
         try {
             const response = await fetch(page);
             Sidecontent.innerHTML = await response.text();
-            const svgs = Sidecontent.querySelectorAll('.map-svg')
-            svgs.forEach(el => {
-                console.log(el)
-                if (!el) return
-                // panzoom = Panzoom(el, {
-                //     maxScale: 8,
-                //     minScale: 1,
-                //     contain: 'outside'
-                // })
-
-            })
+            // Ouvrir le panneau
+            Sidepanel.classList.add('visible');
+            Sidepanel.scroll(0, 0)
+            setTimeout(() => panel.classList.add('open'), 10); // laisse le DOM être affiché
+            const els = Sidecontent.querySelectorAll('.map-svg-pnl')
+            console.log(els)
+            initPanZoom(els, 1);
         } catch (err) {
             Sidecontent.innerHTML = "<p>Erreur de chargement.</p>";
         }
-        // Ouvrir le panneau
-        Sidepanel.classList.add('visible');
-        Sidepanel.scroll(0, 0)
     });
 });
 
 
+function initPanZoom(els, startScale) {
+    // const elements = content.querySelectorAll('.needs-panzoom'); // classe mise dans panel-content.html
+    console.log(els, startScale)
+    els.forEach((el) => {
+        const pz = Panzoom(el, {
+            maxScale: 6,
+            minScale: 0.6,
+            startScale: startScale,
+            contain: 'outside',
+        });
+        document.getElementById('panzoom-container').addEventListener('wheel', pz.zoomWithWheel);
+        console.log(typeof (el))
+        // panzoomInstances.push(pz);
+    });
+}
 
 
 // SWIPE POUR FERMER

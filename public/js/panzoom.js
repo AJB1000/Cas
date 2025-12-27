@@ -1,54 +1,22 @@
 /**
-* Panzoom for panning and zooming elements using CSS transforms
+* Panzoom 4.6.1 for panning and zooming elements using CSS transforms
 * Copyright Timmy Willison and other contributors
 * https://github.com/timmywil/panzoom/blob/main/MIT-License.txt
 */
-!function (t, e) {
+((t, e) => {
     "object" == typeof exports && "undefined" != typeof module ? module.exports = e() : "function" == typeof define && define.amd ? define(e) : (t = "undefined" != typeof globalThis ? globalThis : t || self).Panzoom = e()
-}(this, function () {
-    "use strict";
-    var Y = function () {
-        return (Y = Object.assign || function (t) {
+}
+)(this, function () {
+    var a, X = function () {
+        return (X = Object.assign || function (t) {
             for (var e, n = 1, o = arguments.length; n < o; n++)
                 for (var r in e = arguments[n])
                     Object.prototype.hasOwnProperty.call(e, r) && (t[r] = e[r]);
             return t
         }
         ).apply(this, arguments)
-    };
-    function C(t, e) {
-        for (var n = t.length; n--;)
-            if (t[n].pointerId === e.pointerId)
-                return n;
-        return -1
-    }
-    function T(t, e) {
-        if (e.touches)
-            for (var n = 0, o = 0, r = e.touches; o < r.length; o++) {
-                var a = r[o];
-                a.pointerId = n++,
-                    T(t, a)
-            }
-        else
-            -1 < (n = C(t, e)) && t.splice(n, 1),
-                t.push(e)
-    }
-    function N(t) {
-        for (var e, n = (t = t.slice(0)).pop(); e = t.pop();)
-            n = {
-                clientX: (e.clientX - n.clientX) / 2 + n.clientX,
-                clientY: (e.clientY - n.clientY) / 2 + n.clientY
-            };
-        return n
-    }
-    function L(t) {
-        var e;
-        return t.length < 2 ? 0 : (e = t[0],
-            t = t[1],
-            Math.sqrt(Math.pow(Math.abs(t.clientX - e.clientX), 2) + Math.pow(Math.abs(t.clientY - e.clientY), 2)))
-    }
-    "undefined" != typeof window && (window.NodeList && !NodeList.prototype.forEach && (NodeList.prototype.forEach = Array.prototype.forEach),
-        "function" != typeof window.CustomEvent && (window.CustomEvent = function (t, e) {
+    }, i = ("undefined" != typeof window && (window.NodeList && !NodeList.prototype.forEach && (NodeList.prototype.forEach = Array.prototype.forEach),
+        "function" != typeof window.CustomEvent) && (window.CustomEvent = function (t, e) {
             e = e || {
                 bubbles: !1,
                 cancelable: !1,
@@ -58,35 +26,11 @@
             return n.initCustomEvent(t, e.bubbles, e.cancelable, e.detail),
                 n
         }
-        ));
-    var V = {
-        down: "mousedown",
-        move: "mousemove",
-        up: "mouseup mouseleave"
-    };
-    function D(t, e, n, o) {
-        V[t].split(" ").forEach(function (t) {
-            e.addEventListener(t, n, o)
-        })
-    }
-    function G(t, e, n) {
-        V[t].split(" ").forEach(function (t) {
-            e.removeEventListener(t, n)
-        })
-    }
-    "undefined" != typeof window && ("function" == typeof window.PointerEvent ? V = {
-        down: "pointerdown",
-        move: "pointermove",
-        up: "pointerup pointerleave pointercancel"
-    } : "function" == typeof window.TouchEvent && (V = {
-        down: "touchstart",
-        move: "touchmove",
-        up: "touchend touchcancel"
-    }));
-    var a, i = "undefined" != typeof document && !!document.documentMode;
+        ),
+        "undefined" != typeof document && !!document.documentMode);
     var c = ["webkit", "moz", "ms"]
         , l = {};
-    function I(t) {
+    function Y(t) {
         if (l[t])
             return l[t];
         var e = a = a || document.createElement("div").style;
@@ -99,7 +43,7 @@
         }
     }
     function o(t, e) {
-        return parseFloat(e[I(t)]) || 0
+        return parseFloat(e[Y(t)]) || 0
     }
     function s(t, e, n) {
         void 0 === n && (n = window.getComputedStyle(t));
@@ -111,10 +55,10 @@
             bottom: o("".concat(e, "Bottom").concat(t), n)
         }
     }
-    function W(t, e, n) {
-        t.style[I(e)] = n
+    function C(t, e, n) {
+        t.style[Y(e)] = n
     }
-    function Z(t) {
+    function N(t) {
         var e = t.parentNode
             , n = window.getComputedStyle(t)
             , o = window.getComputedStyle(e)
@@ -145,8 +89,63 @@
             }
         }
     }
-    var q = /^http:[\w\.\/]+svg$/;
-    var B = {
+    var T = {
+        down: "mousedown",
+        move: "mousemove",
+        up: "mouseup mouseleave"
+    };
+    function L(t, e, n, o) {
+        T[t].split(" ").forEach(function (t) {
+            e.addEventListener(t, n, o)
+        })
+    }
+    function V(t, e, n) {
+        T[t].split(" ").forEach(function (t) {
+            e.removeEventListener(t, n)
+        })
+    }
+    function G(t, e) {
+        for (var n = t.length; n--;)
+            if (t[n].pointerId === e.pointerId)
+                return n;
+        return -1
+    }
+    function I(t, e) {
+        if (e.touches)
+            for (var n = 0, o = 0, r = e.touches; o < r.length; o++) {
+                var a = r[o];
+                a.pointerId = n++,
+                    I(t, a)
+            }
+        else
+            -1 < (n = G(t, e)) && t.splice(n, 1),
+                t.push(e)
+    }
+    function R(t) {
+        for (var e, n = (t = t.slice(0)).pop(); e = t.pop();)
+            n = {
+                clientX: (e.clientX - n.clientX) / 2 + n.clientX,
+                clientY: (e.clientY - n.clientY) / 2 + n.clientY
+            };
+        return n
+    }
+    function W(t) {
+        var e;
+        return t.length < 2 ? 0 : (e = t[0],
+            t = t[1],
+            Math.sqrt(Math.pow(Math.abs(t.clientX - e.clientX), 2) + Math.pow(Math.abs(t.clientY - e.clientY), 2)))
+    }
+    "undefined" != typeof window && ("function" == typeof window.PointerEvent ? T = {
+        down: "pointerdown",
+        move: "pointermove",
+        up: "pointerup pointerleave pointercancel"
+    } : "function" == typeof window.TouchEvent && (T = {
+        down: "touchstart",
+        move: "touchmove",
+        up: "touchend touchcancel"
+    }));
+    var Z = /^http:[\w\.\/]+svg$/;
+    var q = {
         animate: !1,
         canvas: !1,
         cursor: "move",
@@ -171,11 +170,10 @@
         setTransform: function (t, e, n) {
             var o = e.x
                 , r = e.y
-                , a = e.scale
-                , e = e.isSVG;
-            W(t, "transform", "scale(".concat(a, ") translate(").concat(o, "px, ").concat(r, "px)")),
-                e && i && (a = window.getComputedStyle(t).getPropertyValue("transform"),
-                    t.setAttribute("transform", a))
+                , a = e.isSVG;
+            C(t, "transform", "scale(".concat(e.scale, ") translate(").concat(o, "px, ").concat(r, "px)")),
+                a && i && (e = window.getComputedStyle(t).getPropertyValue("transform"),
+                    t.setAttribute("transform", e))
         },
         startX: 0,
         startY: 0,
@@ -188,20 +186,25 @@
             throw new Error("Panzoom requires an element as an argument");
         if (1 !== u.nodeType)
             throw new Error("Panzoom requires an element with a nodeType of 1");
-        if (e = (t = u).ownerDocument,
-            t = t.parentNode,
-            !(e && t && 9 === e.nodeType && 1 === t.nodeType && e.documentElement.contains(t)))
+        if (!(t => {
+            for (var e = t; e && e.parentNode;) {
+                if (e.parentNode === document)
+                    return 1;
+                e = e.parentNode instanceof ShadowRoot ? e.parentNode.host : e.parentNode
+            }
+        }
+        )(u))
             throw new Error("Panzoom should be called on elements that have been attached to the DOM");
-        f = Y(Y({}, B), f),
-            e = u;
-        var t, e, l = q.test(e.namespaceURI) && "svg" !== e.nodeName.toLowerCase(), n = u.parentNode;
+        f = X(X({}, q), f);
+        t = u;
+        var t, l = Z.test(t.namespaceURI) && "svg" !== t.nodeName.toLowerCase(), n = u.parentNode;
         n.style.overflow = f.overflow,
             n.style.userSelect = "none",
             n.style.touchAction = f.touchAction,
             (f.canvas ? n : u).style.cursor = f.cursor,
             u.style.userSelect = "none",
             u.style.touchAction = f.touchAction,
-            W(u, "transformOrigin", "string" == typeof f.origin ? f.origin : l ? "0 0" : "50% 50%");
+            C(u, "transformOrigin", "string" == typeof f.origin ? f.origin : l ? "0 0" : "50% 50%");
         var r, a, i, c, s, d, m = 0, h = 0, v = 1, p = !1;
         function g(t, e, n) {
             n.silent || (n = new CustomEvent(t, {
@@ -221,8 +224,8 @@
                 var t, e, n;
                 "boolean" == typeof r.animate && (r.animate ? (t = u,
                     e = r,
-                    n = I("transform"),
-                    W(t, "transition", "".concat(n, " ").concat(e.duration, "ms ").concat(e.easing))) : W(u, "transition", "none")),
+                    n = Y("transform"),
+                    C(t, "transition", "".concat(n, " ").concat(e.duration, "ms ").concat(e.easing))) : C(u, "transition", "none")),
                     r.setTransform(u, a, r),
                     g(o, a, r),
                     g("panzoomchange", a, r)
@@ -230,45 +233,45 @@
                 a
         }
         function w(t, e, n, o) {
-            var r, a, i, c, l, s, d, o = Y(Y({}, f), o), p = {
+            var r, a, i, c, l, s, d = X(X({}, f), o), p = {
                 x: m,
                 y: h,
-                opts: o
+                opts: d
             };
-            return !o.force && (o.disablePan || o.panOnlyWhenZoomed && v === o.startScale) || (t = parseFloat(t),
+            return (null != o && o.force || !(d.disablePan || d.panOnlyWhenZoomed && v === d.startScale)) && (t = parseFloat(t),
                 e = parseFloat(e),
-                o.disableXAxis || (p.x = (o.relative ? m : 0) + t),
-                o.disableYAxis || (p.y = (o.relative ? h : 0) + e),
-                o.contain && (e = ((r = (e = (t = Z(u)).elem.width / v) * n) - e) / 2,
-                    i = ((a = (i = t.elem.height / v) * n) - i) / 2,
-                    "inside" === o.contain ? (c = (-t.elem.margin.left - t.parent.padding.left + e) / n,
-                        l = (t.parent.width - r - t.parent.padding.left - t.elem.margin.left - t.parent.border.left - t.parent.border.right + e) / n,
-                        p.x = Math.max(Math.min(p.x, l), c),
-                        s = (-t.elem.margin.top - t.parent.padding.top + i) / n,
-                        d = (t.parent.height - a - t.parent.padding.top - t.elem.margin.top - t.parent.border.top - t.parent.border.bottom + i) / n,
-                        p.y = Math.max(Math.min(p.y, d), s)) : "outside" === o.contain && (c = (-(r - t.parent.width) - t.parent.padding.left - t.parent.border.left - t.parent.border.right + e) / n,
-                            l = (e - t.parent.padding.left) / n,
-                            p.x = Math.max(Math.min(p.x, l), c),
-                            s = (-(a - t.parent.height) - t.parent.padding.top - t.parent.border.top - t.parent.border.bottom + i) / n,
-                            d = (i - t.parent.padding.top) / n,
-                            p.y = Math.max(Math.min(p.y, d), s))),
-                o.roundPixels && (p.x = Math.round(p.x),
-                    p.y = Math.round(p.y))),
+                d.disableXAxis || (p.x = (d.relative ? m : 0) + t),
+                d.disableYAxis || (p.y = (d.relative ? h : 0) + e),
+                d.contain && (t = ((e = (t = (o = N(u)).elem.width / v) * n) - t) / 2,
+                    a = ((r = (a = o.elem.height / v) * n) - a) / 2,
+                    "inside" === d.contain ? (i = (-o.elem.margin.left - o.parent.padding.left + t) / n,
+                        c = (o.parent.width - e - o.parent.padding.left - o.elem.margin.left - o.parent.border.left - o.parent.border.right + t) / n,
+                        p.x = Math.max(Math.min(p.x, c), i),
+                        l = (-o.elem.margin.top - o.parent.padding.top + a) / n,
+                        s = (o.parent.height - r - o.parent.padding.top - o.elem.margin.top - o.parent.border.top - o.parent.border.bottom + a) / n,
+                        p.y = Math.max(Math.min(p.y, s), l)) : "outside" === d.contain && (i = (-(e - o.parent.width) - o.parent.padding.left - o.parent.border.left - o.parent.border.right + t) / n,
+                            c = (t - o.parent.padding.left) / n,
+                            p.x = Math.max(Math.min(p.x, c), i),
+                            l = (-(r - o.parent.height) - o.parent.padding.top - o.parent.border.top - o.parent.border.bottom + a) / n,
+                            s = (a - o.parent.padding.top) / n,
+                            p.y = Math.max(Math.min(p.y, s), l))),
+                d.roundPixels) && (p.x = Math.round(p.x),
+                    p.y = Math.round(p.y)),
                 p
         }
         function b(t, e) {
-            var n, o, r, a, e = Y(Y({}, f), e), i = {
+            var n, o, r, a = X(X({}, f), e), i = {
                 scale: v,
-                opts: e
+                opts: a
             };
-            return !e.force && e.disableZoom || (n = f.minScale,
-                o = f.maxScale,
-                e.contain && (a = (e = Z(u)).elem.width / v,
-                    r = e.elem.height / v,
-                    1 < a && 1 < r && (a = (e.parent.width - e.parent.border.left - e.parent.border.right) / a,
-                        e = (e.parent.height - e.parent.border.top - e.parent.border.bottom) / r,
-                        "inside" === f.contain ? o = Math.min(o, a, e) : "outside" === f.contain && (n = Math.max(n, a, e)))),
-                i.scale = Math.min(Math.max(t, n), o)),
+            return (null != e && e.force || !a.disableZoom) && (e = f.minScale,
+                n = f.maxScale,
+                a.contain && (r = (a = N(u)).elem.width / v,
+                    o = a.elem.height / v,
+                    1 < r) && 1 < o && (r = (a.parent.width - a.parent.border.left - a.parent.border.right) / r,
+                        a = (a.parent.height - a.parent.border.top - a.parent.border.bottom) / o,
+                        "inside" === f.contain ? n = Math.min(n, r, a) : "outside" === f.contain && (e = Math.max(e, r, a))),
+                i.scale = Math.min(Math.max(t, e), n)),
                 i
         }
         function x(t, e, n, o) {
@@ -283,31 +286,31 @@
                 originalEvent: o
             }
         }
-        function E(t, e, n) {
-            var o, r, e = b(t, e), a = e.opts;
-            if (a.force || !a.disableZoom)
-                return t = e.scale,
+        function S(t, e, n) {
+            var o, r = b(t, e), a = r.opts;
+            if (null != e && e.force || !a.disableZoom)
+                return t = r.scale,
                     e = m,
-                    o = h,
-                    a.focal && (e = ((r = a.focal).x / t - r.x / v + m * t) / t,
-                        o = (r.y / t - r.y / v + h * t) / t),
-                    r = w(e, o, t, {
+                    r = h,
+                    a.focal && (e = ((o = a.focal).x / t - o.x / v + m * t) / t,
+                        r = (o.y / t - o.y / v + h * t) / t),
+                    o = w(e, r, t, {
                         relative: !1,
                         force: !0
                     }),
-                    m = r.x,
-                    h = r.y,
+                    m = o.x,
+                    h = o.y,
                     v = t,
                     y("panzoomzoom", a, n)
         }
-        function o(t, e) {
-            e = Y(Y(Y({}, f), {
+        function e(t, e) {
+            e = X(X(X({}, f), {
                 animate: !0
             }), e);
-            return E(v * Math.exp((t ? 1 : -1) * e.step), e)
+            return S(v * Math.exp((t ? 1 : -1) * e.step), e)
         }
-        function S(t, e, n, o) {
-            var r = Z(u)
+        function E(t, e, n, o) {
+            var r = N(u)
                 , a = r.parent.width - r.parent.padding.left - r.parent.padding.right - r.parent.border.left - r.parent.border.right
                 , i = r.parent.height - r.parent.padding.top - r.parent.padding.bottom - r.parent.border.top - r.parent.border.bottom
                 , c = e.clientX - r.parent.left - r.parent.padding.left - r.parent.border.left - r.elem.margin.left
@@ -318,12 +321,12 @@
                     x: c / a * (a * t),
                     y: e / i * (i * t)
                 });
-            return E(t, Y(Y({}, n), {
+            return S(t, X(X({}, n), {
                 animate: !1,
                 focal: r
             }), o)
         }
-        E(f.startScale, {
+        S(f.startScale, {
             animate: !1,
             force: !0
         }),
@@ -334,14 +337,15 @@
                 })
             });
         var M = [];
-        function A(t) {
-            !function (t, e) {
+        function o(t) {
+            ((t, e) => {
                 for (var n, o, r = t; null != r; r = r.parentNode)
                     if (n = r,
                         o = e.excludeClass,
                         1 === n.nodeType && -1 < " ".concat((n.getAttribute("class") || "").trim(), " ").indexOf(" ".concat(o, " ")) || -1 < e.exclude.indexOf(r))
                         return 1
-            }(t.target, f) && (T(M, t),
+            }
+            )(t.target, f) || (I(M, t),
                 p = !0,
                 f.handleStartEvent(t),
                 g("panzoomstart", {
@@ -351,27 +355,27 @@
                     isSVG: l,
                     originalEvent: t
                 }, f),
-                t = N(M),
+                t = R(M),
                 i = t.clientX,
                 c = t.clientY,
                 s = v,
-                d = L(M))
+                d = W(M))
         }
-        function P(t) {
+        function A(t) {
             var e, n, o;
-            p && void 0 !== r && void 0 !== a && void 0 !== i && void 0 !== c && (T(M, t),
-                e = N(M),
+            p && void 0 !== r && void 0 !== a && void 0 !== i && void 0 !== c && (I(M, t),
+                e = R(M),
                 n = 1 < M.length,
                 o = v,
-                n && (0 === d && (d = L(M)),
-                    S(o = b((L(M) - d) * f.step / 80 + s).scale, e, {
+                n && (0 === d && (d = W(M)),
+                    E(o = b((W(M) - d) * f.step / 80 + s).scale, e, {
                         animate: !1
                     }, t)),
                 n && !f.pinchAndPan || x(r + (e.clientX - i) / o, a + (e.clientY - c) / o, {
                     animate: !1
                 }, t))
         }
-        function O(t) {
+        function P(t) {
             1 === M.length && g("panzoomend", {
                 x: m,
                 y: h,
@@ -384,33 +388,33 @@
                 for (; e.length;)
                     e.pop();
             else {
-                t = C(e, t);
+                t = G(e, t);
                 -1 < t && e.splice(t, 1)
             }
             p && (p = !1,
                 r = a = i = c = void 0)
         }
-        var z = !1;
-        function X() {
-            z || (z = !0,
-                D("down", f.canvas ? n : u, A),
-                D("move", document, P, {
+        var O = !1;
+        function z() {
+            O || (O = !0,
+                L("down", f.canvas ? n : u, o),
+                L("move", document, A, {
                     passive: !0
                 }),
-                D("up", document, O, {
+                L("up", document, P, {
                     passive: !0
                 }))
         }
-        return f.noBind || X(),
+        return f.noBind || z(),
         {
-            bind: X,
+            bind: z,
             destroy: function () {
-                z = !1,
-                    G("down", f.canvas ? n : u, A),
-                    G("move", document, P),
-                    G("up", document, O)
+                O = !1,
+                    V("down", f.canvas ? n : u, o),
+                    V("move", document, A),
+                    V("up", document, P)
             },
-            eventNames: V,
+            eventNames: T,
             getPan: function () {
                 return {
                     x: m,
@@ -426,12 +430,12 @@
                     e.hasOwnProperty(t) && (n[t] = e[t]);
                 return n
             },
-            handleDown: A,
-            handleMove: P,
-            handleUp: O,
+            handleDown: o,
+            handleMove: A,
+            handleUp: P,
             pan: x,
             reset: function (t) {
-                var t = Y(Y(Y({}, f), {
+                var t = X(X(X({}, f), {
                     animate: !0,
                     force: !0
                 }), t)
@@ -449,7 +453,7 @@
                     u.style.cursor = "",
                     u.style.userSelect = "",
                     u.style.touchAction = "",
-                    W(u, "transformOrigin", "")
+                    C(u, "transformOrigin", "")
             },
             setOptions: function (t) {
                 for (var e in t = void 0 === t ? {} : t)
@@ -461,26 +465,26 @@
                         u.style.touchAction = t.touchAction)
             },
             setStyle: function (t, e) {
-                return W(u, t, e)
+                return C(u, t, e)
             },
-            zoom: E,
+            zoom: S,
             zoomIn: function (t) {
-                return o(!0, t)
+                return e(!0, t)
             },
             zoomOut: function (t) {
-                return o(!1, t)
+                return e(!1, t)
             },
-            zoomToPoint: S,
+            zoomToPoint: E,
             zoomWithWheel: function (t, e) {
                 t.preventDefault();
-                var e = Y(Y(Y({}, f), e), {
+                var e = X(X(X({}, f), e), {
                     animate: !1
                 })
                     , n = 0 === t.deltaY && t.deltaX ? t.deltaX : t.deltaY;
-                return S(b(v * Math.exp((n < 0 ? 1 : -1) * e.step / 3), e).scale, t, e, t)
+                return E(b(v * Math.exp((n < 0 ? 1 : -1) * e.step / 3), e).scale, t, e, t)
             }
         }
     }
-    return t.defaultOptions = B,
+    return t.defaultOptions = q,
         t
 });
