@@ -55,9 +55,9 @@ hotspots.forEach(hs => {
             Sidepanel.classList.add('visible');
             Sidepanel.scroll(0, 0)
             setTimeout(() => panel.classList.add('open'), 10); // laisse le DOM être affiché
-            const els = Sidecontent.querySelectorAll('.map-svg-pnl')
+            const els = Sidecontent.querySelectorAll('.pz')
             console.log(els)
-            initPanZoom(els, 1);
+            initPanZoom(els);
         } catch (err) {
             Sidecontent.innerHTML = "<p>Erreur de chargement.</p>";
         }
@@ -65,14 +65,13 @@ hotspots.forEach(hs => {
 });
 
 
-function initPanZoom(els, startScale) {
+function initPanZoom(els) {
     // const elements = content.querySelectorAll('.needs-panzoom'); // classe mise dans panel-content.html
-    console.log(els, startScale)
+    console.log(els)
     els.forEach((el) => {
         const pz = Panzoom(el, {
             maxScale: 6,
-            minScale: 0.6,
-            startScale: startScale,
+            minScale: 1,
             contain: 'outside',
         });
         document.getElementById('panzoom-container').addEventListener('wheel', pz.zoomWithWheel);
