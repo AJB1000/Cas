@@ -341,7 +341,7 @@ footer p {
   padding: 10px;
   font-family: sans-serif;
 }
-
+#side-panel.no-swipe { touch-action: none !important; }
 /* responsive */
 /* @media screen and (max-width: 677px) {
   .container {

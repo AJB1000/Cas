@@ -66,7 +66,6 @@ hotspots.forEach(hs => {
 
 
 function initPanZoom(els) {
-    // const elements = content.querySelectorAll('.needs-panzoom'); // classe mise dans panel-content.html
     console.log(els)
     els.forEach((el) => {
         const pz = Panzoom(el, {
@@ -75,8 +74,6 @@ function initPanZoom(els) {
             contain: 'outside',
         });
         document.getElementById('panzoom-container').addEventListener('wheel', pz.zoomWithWheel);
-        console.log(typeof (el))
-        // panzoomInstances.push(pz);
     });
 }
 
@@ -94,6 +91,8 @@ Sidepanel.addEventListener('touchmove', e => {
 
     // si swipe vers la droite > 60px → fermer
     if (deltaX > 60) {
+        // si le panzoom à lieu sur une image on ne le prend pas en compte
+        if (e.target.nodeName === 'image') return
         Sidepanel.classList.remove('visible');
     }
 });
@@ -107,6 +106,11 @@ document.addEventListener('click', e => {
     }
 });
 
+// sidecontent.addEventListener('pointerdown', e => {
+//     if (e.target.closest('.pz'))
+//         panel.classList.add('no-swipe');
+// });
+// Sidecontent.addEventListener('pointerup', () => panel.classList.remove('no-swipe'));
 
 // const tooltip = document.getElementById('tooltip');
 // const hotspots = document.querySelectorAll('.hotspot');
