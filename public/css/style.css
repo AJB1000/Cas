@@ -274,7 +274,7 @@ footer p {
 /* Conteneur responsive */
 .panzoom-container {
   width: 100%;
-  height: 40vh;
+  height: 35vh;
   /* pour occuper tout l’écran mobile */
   overflow: hidden;
   position: relative;
