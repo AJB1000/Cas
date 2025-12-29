@@ -1,0 +1,289 @@
+@import 'base';
+
+.btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.button {
+  background-color: var(--secondary);
+  border: none;
+  color: white;
+  padding: 7px 12px;
+  text-align: center;
+  text-decoration: none;
+  font-size: .8rem;
+  cursor: pointer;
+}
+
+.btn-group .button:hover {
+  /* background-color: dodgerblue; */
+  box-shadow:0 8px 16px 0 rgba(0,0,0,0.6)
+}
+
+
+.left {
+  flex: 75%;
+  padding-right: 10px;
+  column-count: 3;
+}
+
+.right {
+  flex: 25%;
+  padding-left: 10px;
+}
+
+.right img {
+  float: right;
+  width: 100%;
+  height: auto;
+}
+
+.tooltip {
+  border-bottom: 2px dashed #3498db;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.goutte{
+  fill-opacity:.75;
+  stroke:#fff;
+  stroke-width:1.5;
+  z-index: 9999;
+  cursor:pointer;
+  transition:transform .2s;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+}
+
+#note-panel {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #f0f0f0;
+  border-top: 1px solid #ccc;
+  padding: 20px;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  /* Le panneau commence complètement en dessous de la fenêtre */
+  transform: translateY(calc(100% + 2rem));
+  /* ajout de 2 rem pour bouton */
+  transition: transform 0.25s ease-out;
+
+  /* La hauteur sera déterminée par son contenu */
+}
+
+#note-panel.visible {
+  transform: translateY(0);
+}
+
+#note-content {
+  font-size: 14px;
+  color: #1c567e;
+
+}
+
+#note-handle {
+  position: relative;
+  float: right;
+  top: -2rem;
+  font-size: 2rem;
+  color: #ffffff;
+  background-color: #1c567e;
+  width: 2rem;
+  height: 2rem;
+  text-align: center;
+  line-height: 2rem;
+  border-radius: 2rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
+  vertical-align: middle;
+}
+
+/* Conteneur responsive */
+.panzoom-container {
+  width: 100%;
+  height: 35vh;
+  /* pour occuper tout l’écran mobile */
+  overflow: hidden;
+  position: relative;
+  touch-action: none;
+  /* essentiel pour le pinch-to-zoom */
+}
+
+/* svg.map {
+  width: 100vw;
+  height: 50vh;
+  display: block;
+} */
+
+/* Cercles interactifs */
+.hotspot circle {
+  fill: rgba(255, 0, 0, 0.15);
+  stroke: red;
+  stroke-width: 3;
+  /* transition: 0.25s ease; */
+}
+
+.hotspot:hover circle {
+  stroke-width: 5;
+  fill: rgba(255, 0, 0, 0.25);
+  /* transform: scale(1.2); */
+}
+
+/* Info-bulle */
+#tooltip {
+  position: absolute;
+  padding: 6px 10px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 4px;
+  font-size: 14px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -120%);
+  transition: opacity 0.15s ease;
+  white-space: nowrap;
+}
+
+#side-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 95vw;              /* adaptatif mobile */
+  /* max-width: 420px; */
+  height: 100vh;
+  background: #ffffff;
+  box-shadow: -4px 0 12px rgba(0,0,0,0.25);
+  transform: translateX(100%);
+  transition: transform 0.3s ease-out;
+  z-index: 9999;
+  overflow-y: auto;
+  /* touch-action: none;       nécessaire pour le swipe */
+}
+
+#side-panel.visible {
+  transform: translateX(0);
+}
+
+#side-content {
+  padding: 10px;
+  font-family: sans-serif;
+}
+#side-panel.no-swipe { touch-action: none !important; }
+/* responsive */
+/* @media screen and (max-width: 677px) {
+  .container {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    width: 90%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .container {
+    width: 960px;
+  }
+} */
+
+@media (max-width: 768px) {
+
+  /* smartphone selon Bootstrap*/
+  header {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    padding: .5rem;
+    border-radius: 10px;
+    margin-bottom: .5rem;
+    text-align: center;
+    box-shadow: 0 4px 6px r100gba(0, 0, 0, 0.1);
+  }
+  .toc ul {
+    column-count: 1;
+  }
+
+  #note-content {
+    column-count: 1;
+  }
+
+  .left {
+    column-count: 1;
+  }
+
+  .right {
+    column-count: 1;
+  }
+
+  header>img {
+    display: none !important;
+  }
+
+  /* ! important nécessaire car display:flex dans style inline */
+  section>div {
+    display: block !important;
+  }
+}
+
+@media (min-width : 768px) {
+
+  /* tablette */
+  #note-content {
+    column-count: 2;
+  }
+
+  .left {
+    column-count: 2;
+  }
+
+  .right {
+    column-count: 1;
+  }
+}
+
+@media (min-width : 992px) {
+
+  /* desktop 1 */
+  #note-content {
+    column-count: 2;
+  }
+
+  .left {
+    column-count: 2;
+  }
+
+  .right {
+    column-count: 2;
+  }
+}
+
+
+@media (min-width : 1200px) {
+
+  /* desktop 2 */
+  #note-content {
+    column-count: 3;
+  }
+
+  .left {
+    column-count: 3;
+  }
+
+  .right {
+    column-count: 2;
+  }
+}
