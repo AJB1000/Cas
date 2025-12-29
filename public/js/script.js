@@ -1,26 +1,29 @@
-const triggers = document.querySelectorAll('.tooltipText');
-const panel = document.getElementById('note-panel');
-const content = document.getElementById('note-content');
-
-triggers.forEach(el => {
-    el.addEventListener('click', () => {
-        content.innerHTML = "<b>Note : </b>" + el.dataset.tip;
-        panel.classList.add('visible');
-        // touchStart(el); touchEnd(el);
+const tooltip = (triggers) => {
+    const panel = document.getElementById('note-panel');
+    const content = document.getElementById('note-content');
+    triggers.forEach(el => {
+        el.addEventListener('click', () => {
+            content.innerHTML = "<b>Note : </b>" + el.dataset.tip;
+            panel.classList.add('visible');
+            // touchStart(el); touchEnd(el);
+        });
     });
-});
 
-panel.addEventListener('click', e => {
-    panel.classList.remove('visible');
-    e.stopPropagation();
-});
-
-// Fermeture par clic extérieur
-document.addEventListener('click', e => {
-    if (!panel.contains(e.target) && !e.target.classList.contains('tooltip')) {
+    panel.addEventListener('click', e => {
         panel.classList.remove('visible');
-    }
-});
+        e.stopPropagation();
+    });
+
+    // Fermeture par clic extérieur
+    document.addEventListener('click', e => {
+        if (!panel.contains(e.target) && !e.target.classList.contains('tooltip')) {
+            panel.classList.remove('visible');
+        }
+    });
+}
+
+const triggers = document.querySelectorAll('.tooltipText');
+tooltip(triggers)
 
 // Activation du pan+zoom
 const element = document.getElementById('map-svg');
@@ -35,8 +38,8 @@ console.log(typeof (element), panzoom)
 document.getElementById('panzoom-container')
     .addEventListener('wheel', panzoom.zoomWithWheel);
 
-// TOOLTIP
-const tooltip = document.getElementById('tooltip');
+// HOTSPOT
+// const tooltip = document.getElementById('tooltip');
 const hotspots = document.querySelectorAll('.hotspot');
 const Sidepanel = document.getElementById('side-panel');
 const Sidecontent = document.getElementById('side-content');
@@ -54,7 +57,9 @@ hotspots.forEach(hs => {
             // Ouvrir le panneau
             Sidepanel.classList.add('visible');
             Sidepanel.scroll(0, 0)
-            setTimeout(() => panel.classList.add('open'), 10); // laisse le DOM être affiché
+            setTimeout(() => Sidepanel.classList.add('open'), 10); // laisse le DOM être affiché
+            const triggers = document.querySelectorAll('.tooltipText');
+            tooltip(triggers) // pour activer les notes de bas de page
             const els = Sidecontent.querySelectorAll('.pz')
             console.log(els)
             initPanZoom(els);

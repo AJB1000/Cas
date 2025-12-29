@@ -1,4 +1,4 @@
-@import 'base';
+@use 'base';
 
 .btn-group {
     display: flex;
@@ -7,7 +7,7 @@
 }
 
 .button {
-  background-color: var(--secondary);
+  background-color: base.$secondary;
   border: none;
   color: white;
   padding: 7px 12px;
@@ -70,7 +70,7 @@
   border-top: 1px solid #ccc;
   padding: 20px;
   box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
+  z-index: 100000;
   /* Le panneau commence complètement en dessous de la fenêtre */
   transform: translateY(calc(100% + 2rem));
   /* ajout de 2 rem pour bouton */
@@ -202,10 +202,9 @@
 } */
 
 @media (max-width: 768px) {
-
   /* smartphone selon Bootstrap*/
   header {
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    background: linear-gradient(135deg, base.$primary, base.$secondary);
     color: white;
     padding: .5rem;
     border-radius: 10px;
@@ -216,23 +215,18 @@
   .toc ul {
     column-count: 1;
   }
-
   #note-content {
     column-count: 1;
   }
-
   .left {
     column-count: 1;
   }
-
   .right {
     column-count: 1;
   }
-
   header>img {
     display: none !important;
   }
-
   /* ! important nécessaire car display:flex dans style inline */
   section>div {
     display: block !important;
@@ -240,23 +234,27 @@
 }
 
 @media (min-width : 768px) {
-
   /* tablette */
+//   header {
+//     background: linear-gradient(135deg, base.$primary, base.$secondary);
+//     color: white;
+//     padding: .5rem;
+//     border-radius: 10px;
+//     margin-bottom: .5rem;
+//     text-align: center;
+//     box-shadow: 0 4px 6px r100gba(0, 0, 0, 0.1);
+//   }
   #note-content {
     column-count: 2;
   }
-
   .left {
     column-count: 2;
   }
-
   .right {
     column-count: 1;
   }
 }
-
 @media (min-width : 992px) {
-
   /* desktop 1 */
   #note-content {
     column-count: 2;

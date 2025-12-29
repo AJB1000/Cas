@@ -1,14 +1,18 @@
-:root {
-    --primary: #2c3e50;
-    --secondary: #3498db;
-    --accent: #e74c3c;
-    --light: #ecf0f1;
-    --dark: #2c3e50;
-    --code-bg: #f8f9fa;
-    --success: #27ae60;
-    --warning: #f39c12;
-    --danger: #e74c3c;
-}
+// :root {
+//     --primary: #2c3e50;
+//     --secondary: #3498db;
+//     --accent: #e74c3c;
+//     --light: #ecf0f1;
+//     --dark: #2c3e50;
+//     --code-bg: #f8f9fa;
+//     --success: #27ae60;
+//     --warning: #f39c12;
+//     --danger: #e74c3c;
+// }
+
+$primary: #2c3e50;
+$secondary: #3498db;
+
 * {
     margin: 0;
     padding: 0;
@@ -26,7 +30,7 @@ body {
 }
 
 header {
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    background: linear-gradient(135deg, $primary, $secondary);
     color: white;
     padding: 1rem;
     border-radius: 10px;
@@ -41,14 +45,14 @@ h1 {
 }
 
 h2 {
-    color: var(--primary);
+    color: $secondary;
     margin: 2rem 0 1rem;
     padding-bottom: 0.5rem;
     border-bottom: 2px solid var(--secondary);
 }
 
 h3 {
-    color: var(--secondary);
+    color: $secondary;
     margin: 1.5rem 0 0.5rem;
 }
 
